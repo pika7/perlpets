@@ -1,0 +1,27 @@
+h1 {
+	font-family: Verdana;
+	color: #971317;
+}
+
+h2 {
+	font-family: Verdana;
+}
+
+p {
+	font-family: Verdana;
+}
+
+a {
+	color: #318A29;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #E01B6A;
+};
+
+p#error {
+	font-weight: bold;
+	color: #FF0000;
+}
