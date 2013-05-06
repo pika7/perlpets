@@ -10,10 +10,13 @@ window.onload = function () {
 	game.preload(
 		'img/bath/bg.png',
 		'img/bath/bubble.png',
-		'img/bath/sponge.png'
+		'img/bath/sponge.png',
+		'img/bath/sparkle.png',
+		'img/bath/donebutton.png'
 	);
 
 	/* preload pet images depending on which pet is selected */
+	// TODO: make this prettier
 	switch(getCookie("pet_type")) {
 		case "testpet":
 		game.preload(
