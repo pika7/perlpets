@@ -48,6 +48,11 @@ if(param())
 	my $total = $strength + $intelligence + $resillience + $speed;
 	my $petPic = param("petimage");
 	my $petName = param("name");
+	my $won = '0';
+	my $lost = '0';
+	my $mood = "normal";
+	my $hunger = "bloated";
+	my $cleanliness = "clean";
 	
 	if($total == 20)
 	{
@@ -60,9 +65,12 @@ if(param())
 			strength => $strength,
 			intelligence => $intelligence,
 			resillience  => $resillience,
-			speed => $speed
-			
-			
+			speed => $speed,
+			won => $won,
+			lost => $lost,
+			mood => $mood,
+			hunger => $hunger,
+			cleanliness => $cleanliness
 		);
 	
 	print $uri, "\n";
