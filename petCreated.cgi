@@ -25,13 +25,24 @@ my $cookie = cookie
 	
 print header(-cookie=>$cookie);
 
-print ("$cookie");
-
 
 print start_html;
 print h1("PerlPets");
 print p("Congratulations! You just finished creating a new pet! \n");	
-print a( {-href=>"CR.cgi"}, "Play Now"); 
+
+if($cookieVal[0] eq "left")
+{
+	print img {src=>'img/testpet/testpet_normal.png',align=>'CENTER', height=>'100', width=>'100'};
+}
+else
+{
+	print img {src=>'img/testpet2/testpet2_normal.png',align=>'CENTER', height=>'100', width=>'100'};
+}
+
+print br;
+print br;
+
+print a( {-href=>"main.cgi"}, "Play Now"); 
 print '<link rel="stylesheet" type="text/css" href="css/main.css">';
 
 
