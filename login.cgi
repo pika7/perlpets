@@ -1,6 +1,4 @@
 #!/usr/local/bin/perl -w
-# sortTable.cgi
-# URL: http://ihome.ust.hk/~cs_lcxae/cgi-bin/sortTable.cgi
 use CGI qw(:standard);
 use CGI::Carp 'fatalsToBrowser';
 use strict;
