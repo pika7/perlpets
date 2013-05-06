@@ -12,17 +12,26 @@ if (@retrieve_cookie)
 	print h1("PerlPets");
 	print '<link rel="stylesheet" type="text/css" href="css/main.css">';
 	
-	foreach my $i (@retrieve_cookie) 
-{
-	if($i=='')
-	{
-	 $i = '0';
-	}
-}
-	
-	
 	print ("$retrieve_cookie[0] \n");
 	print ("$retrieve_cookie[1] \n");
+	
+	if($retrieve_cookie[2] == '')
+	{
+		$retrieve_cookie[2] = '0';
+	}
+	if($retrieve_cookie[3] == '')
+	{
+		$retrieve_cookie[3] = '0';
+	}
+	if($retrieve_cookie[4] == '')
+	{
+		$retrieve_cookie[4] = '0';
+	}
+	if($retrieve_cookie[5] == '')
+	{
+		$retrieve_cookie[5] = '0';
+	}
+	
 	print ("$retrieve_cookie[2] \n");
 	print ("$retrieve_cookie[3] \n");
 	print ("$retrieve_cookie[4] \n");
