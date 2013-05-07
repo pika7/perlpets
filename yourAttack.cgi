@@ -400,7 +400,7 @@ if($retrieve_cookie[0] eq "puffy")
 }
 else
 {
-print img {src=>'img/turdle/turdle_normal.png',align=>'RIGHT', height=>'100', width=>'100'};
+print img {src=>'img/turdle/turdle_normal.png',align=>'LEFT', height=>'100', width=>'100'};
 	
 }
 
