@@ -6,23 +6,23 @@ use URI;
 
 
 print header;
-print start_html("PERLPETS-Regsitration form");
+print start_html("PERLPETS - Registration form");
 print h1("PerlPets");
 print '<link rel="stylesheet" type="text/css" href="css/main.css">';
 print p("Welcome to PerlPets! \n");
-print p("Choose your pet image \n");
-print img {src=>'img/puffy/puffy_normal.png',align=>'LEFT', height=>'100', width=>'100'};
-print img {src=>'img/turdle/turdle_normal.png',align=>'LEFT', height=>'100', width=>'100'};
+print p("Choose your pet! \n");
+print p(
+	img {src=>'img/puffy/puffy_normal.png'},
+	img {src=>'img/turdle/turdle_normal.png'}
+);
 
-print br;
-print br;
 print br;
 print br;
 print br;
 print br;
 
 print hr, start_form;
-print radio_group(-name=>"petimage", -values => ["puffy", "turdle"]);
+print p(radio_group(-name=>"petimage", -values => ["puffy", "turdle"]));
 
 print p("Give it a name \n");
 print p ("Name: ", textfield("name",""));
