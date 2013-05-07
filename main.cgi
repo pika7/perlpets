@@ -145,6 +145,7 @@ if (@retrieve_cookie)
 	my ($sec, $minute, $hour, $day, $month, $year, $wday, $yday, $isdst) = localtime(time);
 
 	# calculate hunger and cleanliness by how long ago the pet was last fed or bathed
+	# hunger
 	my ($lastFedHour, $lastFedDay, $lastFedMonth, $lastFedYear) = split('_', $retrieve_cookie[9]);
 	my $hunger;
 
@@ -199,8 +200,60 @@ if (@retrieve_cookie)
 
 	print p({-align=>'center'},"HUNGER: $hunger");
 
+	# cleanliness
+	my ($lastBathedHour, $lastBathedDay, $lastBathedMonth, $lastBathedYear) = split('_', $retrieve_cookie[10]);
+	my $cleanliness;
 
-	print p({-align=>'center'},"CLEANLINESS: $retrieve_cookie[10]");
+	if ($year > $lastBathedYear) {
+		$cleanliness = "Filthy";
+	}
+	elsif ($month > $lastBathedMonth) {
+		$cleanliness = "Filthy";
+	}
+	elsif ($day - $lastBathedDay >= 2) {
+		$cleanliness = "Filthy";
+	}
+	else {
+		# calculate how many hours passed since pet last fed
+		my $hoursPassed;
+
+		# day change
+		if ($day - $lastBathedDay == 1) {
+			$hoursPassed = $hour + (23 - $lastBathedHour);
+		}
+		# same day
+		elsif ($day == $lastBathedDay) {
+			$hoursPassed = $hour - $lastBathedHour;
+		}
+		else {
+			$hoursPassed = -1;
+		}
+
+		# set the cleanliness level
+		if ($hoursPassed >= 12) {
+			$cleanliness = "Filthy";
+		}
+		elsif ($hoursPassed >= 9) {
+			$cleanliness = "Very dirty";
+		}
+		elsif ($hoursPassed >= 6) {
+			$cleanliness = "Dirty"
+		}
+		elsif ($hoursPassed >= 3) {
+			$cleanliness = "Normal"
+		}
+		elsif ($hoursPassed >= 2) {
+			$cleanliness = "Clean"
+		}
+		elsif ($hoursPassed >= 0) {
+			$cleanliness = "Sparkling"
+		}
+		else {
+			$cleanliness = "Error";
+		}
+	}
+
+	print p({-align=>'center'},"CLEANLINESS: $cleanliness");
 
 	print "</DIV>";
 	
