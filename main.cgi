@@ -7,13 +7,11 @@ my @retrieve_cookie = cookie('ID');
 
 my $BattleCookie = cookie
 (
-	#turn, EName, YourHealth, EHealth, Estrength, Eintel, Eres, Espeed 
+	#turn, EName, YourHealth, EHealth, Estrength, Eintel, Eres, Espeed, damagetoYOu, damagetoE
 	-name=>'BATTLE',
 	-value=>['1', "SLIME", '100', '100', '3', '4','10','10'],
 	-expires=>'+1y'
 );
-
-
 
 if (@retrieve_cookie) 
 {	
