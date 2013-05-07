@@ -5,20 +5,11 @@ use CGI qw(:standard);
 
 my @retrieve_cookie = cookie('ID');
 
-my $BattleCookie = cookie
-(
-	#turn, EName, YourHealth, EHealth, Estrength, Eintel, Eres, Espeed 
-	-name=>'BATTLE',
-	-value=>['1', "SLIME", '100', '100', '3', '4','10','10'],
-	-expires=>'+1y'
-);
-
-
 
 if (@retrieve_cookie) 
 {	
-	print header(-cookie=>$BattleCookie);
-	print start_html;
+	print header();
+	print start_html("PerlPets - Take a bath!");
 	print h1("PerlPets");
 	print '<link rel="stylesheet" type="text/css" href="css/main.css">';
 	
@@ -50,15 +41,10 @@ if (@retrieve_cookie)
 	
 	print "</DIV>";
 	
-	print "<div class=\"Status\">\n";
-
 	# stuff
-	
 
-	# end stuff
 
-	print "</DIV>";
-	
+	# end stuff	
 
 	end_html;
 	exit;
