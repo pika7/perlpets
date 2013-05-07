@@ -26,7 +26,7 @@ my $cookie = cookie
 print header(-cookie=>$cookie);
 
 
-print start_html;
+print start_html("PERLPETS-NEW PET CREATED!");
 print h1("PerlPets");
 print p("Congratulations! You just finished creating a new pet! \n");	
 

@@ -22,9 +22,20 @@ my $BattleCookie = cookie
 	-expires=>'+1y'
 );
 
+
+
+
+
+
+
+
+
+
+
+
 print header(-cookie=>$BattleCookie);
 
-print start_html;
+print start_html("Pet Battle-PERLPETS");
 
 print '<link rel="stylesheet" type="text/css" href="css/main.css">';
 
@@ -37,9 +48,17 @@ print p("<CENTER><b>- TURN $battle_cookie[0] - </b></CENTER>");
 
 print p("<b>$battle_cookie[1]</b> wants to fight!");
 
-print img {src=>'img/puffy/puffy_normal.png',align=>'LEFT', height=>'100', width=>'100'};
-
+if($retrieve_cookie[0] eq "puffy")
+{
+	print img {src=>'img/puffy/puffy_normal.png',align=>'LEFT', height=>'100', width=>'100'};
+}
+else
+{
 print img {src=>'img/turdle/turdle_normal.png',align=>'RIGHT', height=>'100', width=>'100'};
+	
+}
+
+print img {src=>'img/slime/slime_normal.jpg',align=>'RIGHT', height=>'100', width=>'100'};
 print br;
 print br;
 print br;

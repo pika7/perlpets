@@ -23,7 +23,7 @@ my $cookie = cookie
 	
 print header(-cookie=>$cookie);
 
-print start_html;
+print start_html("Perlpets- Stat increased!");
 print h1("PerlPets");
 print p("YOUR PET HAS BECOME STRONGER! \n");	
 if($cookieVal[0] eq "puffy")

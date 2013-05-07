@@ -242,7 +242,7 @@ my $cookie = cookie
 print header(-cookie=>[$BattleCookie, $cookie]);
 
 
-print start_html;
+print start_html("Pet Battle-PERLPETS");
 
 print '<link rel="stylesheet" type="text/css" href="css/main.css">';
 
@@ -388,9 +388,17 @@ if($yourAction eq "MagicBarrier")
 
 
 
-print img {src=>'img/puffy/puffy_normal.png',align=>'LEFT', height=>'100', width=>'100'};
-
+if($retrieve_cookie[0] eq "puffy")
+{
+	print img {src=>'img/puffy/puffy_normal.png',align=>'LEFT', height=>'100', width=>'100'};
+}
+else
+{
 print img {src=>'img/turdle/turdle_normal.png',align=>'RIGHT', height=>'100', width=>'100'};
+	
+}
+
+print img {src=>'img/slime/slime_angry.jpg',align=>'RIGHT', height=>'100', width=>'100'};
 print br;
 print br;
 print br;
