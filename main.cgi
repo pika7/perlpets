@@ -80,7 +80,7 @@ if (@retrieve_cookie)
 	print br;
 	print a( {-href=>"bath.cgi"}, "Bath"); 
 	print br;
-	print a( {-href=>"deletepet.cgi"}, "Delete the pet"); 
+	print a( {-href=>"settings.cgi"}, "Demo settings"); 
 	
 	
 	if($retrieve_cookie[0] eq "puffy")

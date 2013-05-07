@@ -9,14 +9,16 @@ my @retrieve_cookie = cookie('ID');
 if (@retrieve_cookie) 
 {	
 	print header();
-	print start_html("PerlPets - Settings");
+	print start_html("PerlPets - Demo settings");
 	print h1("PerlPets");
 	print '<link rel="stylesheet" type="text/css" href="css/main.css">';
 
 	# stuff
+	print p("These are for demo purposes only.");
 	print p('<a href="deletepet.cgi">Delete pet</a>');
 	print p('<a href="makehungry.cgi">Make pet hungry</a>');
 	print p('<a href="makedirty.cgi">Make pet dirty</a>');
+	print p('<a href="main.cgi">Back to main</a>');
 
 	# end stuff
 	
