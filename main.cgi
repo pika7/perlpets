@@ -81,8 +81,7 @@ if (@retrieve_cookie)
 	print a( {-href=>"bath.cgi"}, "Bath"); 
 	print br;
 	print a( {-href=>"settings.cgi"}, "Demo settings"); 
-	
-	
+
 	if($retrieve_cookie[0] eq "puffy")
 	{
 		print "<center>";
@@ -104,7 +103,7 @@ if (@retrieve_cookie)
 		if($retrieve_cookie[6] > $retrieve_cookie[7])
 		{
 			$moodIndicator = "HAPPY";
-			print img {src=>'img/puffy/turdle_happy.png'};
+			print img {src=>'img/turdle/turdle_happy.png'};
 		}
 		else
 		{
