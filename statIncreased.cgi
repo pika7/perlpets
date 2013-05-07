@@ -14,8 +14,6 @@ foreach my $i (@values)
 	push(@cookieVal, $data);
 }
 
-
-
 my $cookie = cookie
 (
 	-name=>'ID',
@@ -25,32 +23,44 @@ my $cookie = cookie
 	
 print header(-cookie=>$cookie);
 
-
 print start_html;
 print h1("PerlPets");
-print p("Congratulations! You just finished creating a new pet! \n");	
-
+print p("YOUR PET HAS BECOME STRONGER! \n");	
 if($cookieVal[0] eq "left")
 {
-	
+	print "<center>";
 	print img {src=>'img/testpet/testpet_normal.png',align=>'CENTER', height=>'100', width=>'100'};
+	print "</center>";
 }
 else
 {
+	print "<center>";
 	print img {src=>'img/testpet2/testpet2_normal.png',align=>'CENTER', height=>'100', width=>'100'};
+	print "</center>";
 }
-
 print br;
 print br;
 
-print a( {-href=>"main.cgi"}, "Play Now"); 
+	print "<b>";
+	print p({-align=>'center'},"$cookieVal[1]'s new battle status");
+	print "</b>";
+
+	print p({-align=>'center'},"STRENGTH: $cookieVal[2]");
+	print p({-align=>'center'},"INTELLIGENCE: $cookieVal[3]");
+	print p({-align=>'center'},"RESILLIENCE: $cookieVal[4]");	
+	print p({-align=>'center'},"SPEED: $cookieVal[5]");
+	print br;
+
+
+print a( {-href=>"main.cgi"}, "Go Back to Main Menu"); 
 print '<link rel="stylesheet" type="text/css" href="css/main.css">';
 
 
 
 end_html;
 exit;
-	
+
+
 
 
 

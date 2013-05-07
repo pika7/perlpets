@@ -1,7 +1,9 @@
 #!/usr/bin/perl -T
 use strict;
+use CGI;
 use CGI::Carp 'fatalsToBrowser';
 use CGI qw(:standard);
+use URI;
 
 my @retrieve_cookie = cookie('ID');
 
@@ -10,9 +12,10 @@ if (@retrieve_cookie)
 	print header;
 	print start_html;
 	print h1("PerlPets");
+	print "<b>";
+	print p("Train your pet");
+	print "</b>";
 	print '<link rel="stylesheet" type="text/css" href="css/main.css">';
-	
-
 	
 	if($retrieve_cookie[2] == '')
 	{
@@ -55,64 +58,64 @@ if (@retrieve_cookie)
 		$retrieve_cookie[10] = '0';
 	}
 	
-	print ("PETTYPE  ");
-	print ("$retrieve_cookie[0] \n");
-	print br;
+	print hr, start_form;
+	print radio_group(-name=>"stats", -values => ["Strength", "Intelligence", "Resillience", "Speed"]);
+	print p(submit("TRAIN!"));
+	my $chosenStat =  param("stats");
+	my $newStrength=$retrieve_cookie[2];
+	my $newIntel=$retrieve_cookie[3];
+	my $newRes=$retrieve_cookie[4];
+	my $newSpeed=$retrieve_cookie[5];
 	
-	print ("NAME  ");
-	print ("$retrieve_cookie[1] \n");
-	print br;
-	
-	print ("STRENGTH  ");
-	print ("$retrieve_cookie[2] \n");
-	print br;
-	
-	print ("INTELLIGENCE  ");
-	print ("$retrieve_cookie[3] \n");
-	print br;
-	
-	print ("RESILLIENCE  ");
-	print ("$retrieve_cookie[4] \n");
-	print br;
-	
-	print ("SPEED  ");
-	print ("$retrieve_cookie[5] \n");
-	print br;
-	
-	print ("WON  ");
-	print ("$retrieve_cookie[6] \n");
-	print br;
-	
-	print ("LOST  ");
-	print ("$retrieve_cookie[7] \n");
-	print br;
-	
-	print ("MOOD  ");
-	print ("$retrieve_cookie[8] \n");
-	print br;
-	
-	print ("HUNGER  ");
-	print ("$retrieve_cookie[9] \n");
-	print br;
-	
-	print ("CLEANLINESS  ");
-	print ("$retrieve_cookie[10] \n");
-	print br;
+	if(param())
+	{
+		my $statVal = param("stats");
+		if($statVal eq "Strength")
+		{
+			$newStrength = $newStrength + 5;
+		}
+		if($statVal eq "Intelligence")
+		{
+			 $newIntel = $newIntel + 5;
 
+		}
+		if($statVal eq "Resillience")
+		{
+			$newRes = $newRes + 5;
+		}
+		if($statVal eq "Speed")
+		{
+			$newSpeed= $newSpeed + 5;
+		}
+		
+		
+		my $uri = URI->new('statIncreased.cgi');
+		$uri->query_form
+		(
+			petpic => $retrieve_cookie[0],
+			name => $retrieve_cookie[1],
+			strength => $newStrength,
+			intelligence => $newIntel,
+			resillience  => $newRes,
+			speed => $newSpeed,
+			won => $retrieve_cookie[6],
+			lost => $retrieve_cookie[7],
+			mood => $retrieve_cookie[8],
+			hunger => $retrieve_cookie[9],
+			cleanliness => $retrieve_cookie[10]
+		);	
 
+	print "<META HTTP-EQUIV=refresh CONTENT=\"1 URL='$uri'\">\n";
+		
+		
+		
+		
+	}
+	# print "<META HTTP-EQUIV=refresh CONTENT=\"1 URL='$uri'\">\n";
+	print end_form, hr;
+		
 	
-	# print p("Cookie value is $retrieve_cookie[0], $retrieve_cookie[1], $retrieve_cookie[2], $retrieve_cookie[3], $retrieve_cookie[4], $retrieve_cookie[5],$retrieve_cookie[6],$retrieve_cookie[7] \n");
 	end_html;
 	exit;
 }
-else 
-{
-	print header;
-	print start_html;
-	print h1("PerlPets");
-	print '<link rel="stylesheet" type="text/css" href="css/main.css">';
-	print p("This is your first time visiting PerlPets! Make a new pet before start playing the game. \n");
-	print a( {-href=>"form.cgi"}, "Make a NEW pet"); 
-	end_html;
-	exit;
-}
+

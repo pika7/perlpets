@@ -12,8 +12,6 @@ if (@retrieve_cookie)
 	print h1("PerlPets");
 	print '<link rel="stylesheet" type="text/css" href="css/main.css">';
 	
-	
-	
 	if($retrieve_cookie[2] == '')
 	{
 		$retrieve_cookie[2] = '0';
@@ -54,7 +52,6 @@ if (@retrieve_cookie)
 	{
 		$retrieve_cookie[10] = '0';
 	}
-	
 	
 	
 	if($retrieve_cookie[0] eq "left")
