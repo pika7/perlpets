@@ -242,7 +242,7 @@ my $cookie = cookie
 print header(-cookie=>[$BattleCookie, $cookie]);
 
 
-print start_html;
+print start_html("Pet Battle-PERLPETS");
 
 print '<link rel="stylesheet" type="text/css" href="css/main.css">';
 

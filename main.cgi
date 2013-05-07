@@ -16,7 +16,7 @@ my $BattleCookie = cookie
 if (@retrieve_cookie) 
 {	
 	print header(-cookie=>$BattleCookie);
-	print start_html;
+	print start_html("PerlPets - Main page");
 	print h1("PerlPets");
 	print '<link rel="stylesheet" type="text/css" href="css/main.css">';
 	
@@ -153,7 +153,7 @@ if (@retrieve_cookie)
 else 
 {
 	print header;
-	print start_html;
+	print start_html("PERLPETS-Main Page");
 	print h1("PerlPets");
 	print '<link rel="stylesheet" type="text/css" href="css/main.css">';
 	print p("This is your first time visiting PerlPets! Make a new pet before start playing the game. \n");

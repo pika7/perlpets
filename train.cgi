@@ -10,7 +10,7 @@ my @retrieve_cookie = cookie('ID');
 if (@retrieve_cookie) 
 {
 	print header;
-	print start_html;
+	print start_html("perlpets-train page");
 	print h1("PerlPets");
 	print "<b>";
 	print p("Train your pet");

@@ -6,7 +6,7 @@ use URI;
 
 
 print header;
-print start_html;
+print start_html("PERLPETS-Regsitration form");
 print h1("PerlPets");
 print '<link rel="stylesheet" type="text/css" href="css/main.css">';
 print p("Welcome to PerlPets! \n");

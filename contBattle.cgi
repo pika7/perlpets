@@ -22,9 +22,20 @@ my $BattleCookie = cookie
 	-expires=>'+1y'
 );
 
+
+
+
+
+
+
+
+
+
+
+
 print header(-cookie=>$BattleCookie);
 
-print start_html;
+print start_html("Pet Battle-PERLPETS");
 
 print '<link rel="stylesheet" type="text/css" href="css/main.css">';
 
