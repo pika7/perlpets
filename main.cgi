@@ -139,10 +139,69 @@ if (@retrieve_cookie)
 	print "<b>";
 	print p({-align=>'center'},"---Personal Status---");
 	print "</b>";
-		
 	print p({-align=>'center'},"MOOD: $moodIndicator ");
-	print p({-align=>'center'},"HUNGER: $retrieve_cookie[9]");
+
+	# get current date and time
+	my ($sec, $minute, $hour, $day, $month, $year, $wday, $yday, $isdst) = localtime(time);
+
+	# calculate hunger and cleanliness by how long ago the pet was last fed or bathed
+	my ($lastFedHour, $lastFedDay, $lastFedMonth, $lastFedYear) = split('_', $retrieve_cookie[9]);
+	my $hunger;
+
+	if ($year > $lastFedYear) {
+		$hunger = "Starving";
+	}
+	elsif ($month > $lastFedMonth) {
+		$hunger = "Starving";
+	}
+	elsif ($day - $lastFedDay >= 2) {
+		$hunger = "Starving";
+	}
+	else {
+		# calculate how many hours passed since pet last fed
+		my $hoursPassed;
+
+		# day change
+		if ($day - $lastFedDay == 1) {
+			$hoursPassed = $hour + (23 - $lastFedHour);
+		}
+		# same day
+		elsif ($day == $lastFedDay) {
+			$hoursPassed = $hour - $lastFedHour;
+		}
+		else {
+			$hoursPassed = -1;
+		}
+
+		# set the hunger level
+		if ($hoursPassed >= 12) {
+			$hunger = "Starving";
+		}
+		elsif ($hoursPassed >= 9) {
+			$hunger = "Very hungry";
+		}
+		elsif ($hoursPassed >= 6) {
+			$hunger = "Hungry"
+		}
+		elsif ($hoursPassed >= 3) {
+			$hunger = "Fine"
+		}
+		elsif ($hoursPassed >= 2) {
+			$hunger = "Full"
+		}
+		elsif ($hoursPassed >= 0) {
+			$hunger = "Stuffed"
+		}
+		else {
+			$hunger = "Error";
+		}
+	}
+
+	print p({-align=>'center'},"HUNGER: $hunger");
+
+
 	print p({-align=>'center'},"CLEANLINESS: $retrieve_cookie[10]");
+
 	print "</DIV>";
 	
 
