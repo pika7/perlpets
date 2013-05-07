@@ -203,8 +203,14 @@ if($yourAction eq "MagicBarrier")
 
 }
 
-
-
+if($myNewHP<0)
+{
+	$myNewHP =0;
+}
+if($yourNewHP<0)
+{
+	$yourNewHP=0;
+}
 
 my $BattleCookie = cookie
 (
