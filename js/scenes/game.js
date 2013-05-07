@@ -1,9 +1,10 @@
+var cookieArray;
+
 var SceneGame = Class.create(Scene, {
 	cleanliness: 0, // how clean the pet is
 	clean: false, // if the pet is clean
 	doingDown: false, // if the pet is currently going down
 	timer: 0, // the timer until done button appears
-	cookieUpdated: false, // if the cleanliness cookie has been updated
 
 	initialize: function (score) {
 		/* just so that the button can access it? */
@@ -21,7 +22,8 @@ var SceneGame = Class.create(Scene, {
 		this.addChild(this.background);
 
 		/* get the pet type from the cookie */
-		var cookieArray = getCookie("ID").split("&");
+		console.log(getCookie("ID"));
+		cookieArray = getCookie("ID").split("&");
 		var petType = cookieArray[0];
 
 		/* display the pet in the center */
@@ -78,11 +80,6 @@ var SceneGame = Class.create(Scene, {
 				/* show the done button and keep bringing it to the top */
 				this.removeChild(this.doneButton);
 				this.addChild(this.doneButton);
-
-				if (!this.cookieUpdated) {
-					this.cookieUpdated = true;
-					// update the cleanliness cookie here
-				}
 			}
 		}
 	},
@@ -150,6 +147,15 @@ function getCookie(c_name)
 	return c_value;
 }
 
+/* set cookie */
+function setCookie(c_name, value, exdays)
+{
+	var exdate=new Date();
+	exdate.setDate(exdate.getDate() + exdays);
+	var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
+	document.cookie=c_name + "=" + c_value;
+}
+
 /* the pet in the center */
 var Pet = Class.create(Sprite, {
 	/* the x and y coordinates of the mouse in the last frame */
@@ -172,8 +178,6 @@ var Pet = Class.create(Sprite, {
 		this.happyImage = "img/" + this.petType + "/" + this.petType + "_happy.png";
 
 		this.image = this.game.assets[this.normalImage];
-		console.log(this.normalImage);
-		console.log(this.happyImage);
 	},
 
 	startScrub: function(evt) {
@@ -287,5 +291,6 @@ var DoneButton = Class.create(Sprite, {
 
 	closeWindow: function(evt) {
 		window.close();
+		window.opener.location="clean.cgi";
 	}
 })

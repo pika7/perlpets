@@ -16,6 +16,7 @@ if (@retrieve_cookie)
 	# stuff
 	print p('<a href="deletepet.cgi">Delete pet</a>');
 	print p('<a href="makehungry.cgi">Make pet hungry</a>');
+	print p('<a href="makedirty.cgi">Make pet dirty</a>');
 
 	# end stuff
 	

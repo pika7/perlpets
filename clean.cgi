@@ -8,11 +8,23 @@ my @retrieve_cookie = cookie('ID');
 
 if (@retrieve_cookie) 
 {	
-	print header();
+	# get current date and time
+	my ($sec, $minute, $hour, $day, $month, $year, $wday, $yday, $isdst) = localtime(time);
+	my $currDate = $hour . "_" . $day . "_" . $month . "_" . $year;
+	
+	my $cookie = cookie
+	(
+		-name=>'ID',
+		-value=>["$retrieve_cookie[0]","$retrieve_cookie[1]","$retrieve_cookie[2]","$retrieve_cookie[3]", "$retrieve_cookie[4]", "$retrieve_cookie[5]", "$retrieve_cookie[6]", "$retrieve_cookie[7]","$retrieve_cookie[8]","$retrieve_cookie[9]","$currDate"],
+		-expires=>'+1y'
+	);
+
+	print header(-cookie=>$cookie);
 	print '<script src="js/open_window.js"></script>';
-	print start_html("PerlPets - Take a bath!");
+	print start_html("PerlPets - Your pet is clean!");
 	print h1("PerlPets");
 	print '<link rel="stylesheet" type="text/css" href="css/main.css">';
+
 	
 	print "<div class=\"Actions\">\n";
 	print a( {-href=>"main.cgi"},"My Pet's status"); 
@@ -26,25 +38,23 @@ if (@retrieve_cookie)
 	print a( {-href=>"bath.cgi"}, "Bath"); 
 	print br;
 	
-	print "</DIV>";
-	
-
 	if($retrieve_cookie[0] eq "puffy")
 	{
 		print "<center>";
-		print img {src=>'img/puffy/puffy_normal.png'};
+		print img {src=>'img/puffy/puffy_happy.png'};
 		print "</center>";
 	}
 	else
 	{
 		print "<center>";
-		print img {src=>'img/turdle/turdle_normal.png'};
+		print img {src=>'img/turdle/turdle_happy.png'};
 		print "</center>";
 	}
 
+	print "</DIV>";
+	
 	# stuff
-	print p('<a href=\'javascript:open_window("PerlPets - Bath Time!", "bath.html", 100, 100, 500, 400, 0, 0, 0, 0, 0)\'>Click here to take a bath.</a>');
-
+	print p("Your pet is now clean!");
 	# end stuff	
 
 	end_html;
