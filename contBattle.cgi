@@ -60,8 +60,8 @@ print p("WHAT ARE YOU GOING TO DO???????");
 
 print p("<b>Punch</b>: Physical Damage");
 print p("<b>Magic</b>: Magical damage based on intelligence");
-print p("<b>Defend</b>: Mitigates damage based on Resillience");
-print p("<b>MagicBarrier</b>: Mitigates magical damage based on speed ");
+print p("<b>Defend</b>: Counters damage based on Resillience");
+print p("<b>MagicBarrier</b>: Counters magical damage based on speed ");
 
 print hr, start_form;
 print radio_group(-name=>"battleoption", -values => ["Punch", "Magic", "Defend", "MagicBarrier"]);

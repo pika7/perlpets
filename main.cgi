@@ -51,6 +51,7 @@ if (@retrieve_cookie)
 	if($retrieve_cookie[8] == '')
 	{
 		$retrieve_cookie[8] = '0';
+		
 	}
 	if($retrieve_cookie[9] == '')
 	{
@@ -61,17 +62,41 @@ if (@retrieve_cookie)
 		$retrieve_cookie[10] = '0';
 	}
 	
+	my $moodIndicator = "Normal";
+	if($retrieve_cookie[8]==0)
+	{
+		$moodIndicator = "Normal";
+	}
+	
 	
 	if($retrieve_cookie[0] eq "puffy")
 	{
 		print "<center>";
-		print img {src=>'img/puffy/puffy_normal.png', height=>'100', width=>'100',align=>"CENTER"};
+		if($retrieve_cookie[6] > $retrieve_cookie[7])
+		{
+			$moodIndicator = "HAPPY";
+			print img {src=>'img/puffy/puffy_happy.png', height=>'100', width=>'100',align=>"CENTER"};
+		}
+		else
+		{
+			$moodIndicator = "NORMAL";
+			print img {src=>'img/puffy/puffy_normal.png', height=>'100', width=>'100',align=>"CENTER"};
+		}
 		print "</center>";
 	}
 	else
 	{
 		print "<center>";
-		print img {src=>'img/turdle/turdle_normal.png', height=>'100', width=>'100'};
+		if($retrieve_cookie[6] > $retrieve_cookie[7])
+		{
+			$moodIndicator = "HAPPY";
+			print img {src=>'img/puffy/turdle_happy.png', height=>'100', width=>'100',align=>"CENTER"};
+		}
+		else
+		{
+			$moodIndicator = "NORMAL";
+			print img {src=>'img/turdle/turdle_normal.png', height=>'100', width=>'100'};
+		}
 		print "</center>";
 	}
 	
@@ -114,8 +139,7 @@ if (@retrieve_cookie)
 	print "<b>";
 	print p({-align=>'center'},"---Personal Status---");
 	print "</b>";
-
-	print p({-align=>'center'},"MOOD: $retrieve_cookie[8]");
+	print p({-align=>'center'},"MOOD: $moodIndicator ");
 
 	# get current date and time
 	my ($sec, $minute, $hour, $day, $month, $year, $wday, $yday, $isdst) = localtime(time);
@@ -174,6 +198,7 @@ if (@retrieve_cookie)
 	}
 
 	print p({-align=>'center'},"HUNGER: $hunger");
+
 
 	print p({-align=>'center'},"CLEANLINESS: $retrieve_cookie[10]");
 

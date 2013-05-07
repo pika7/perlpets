@@ -11,6 +11,47 @@ my @retrieve_cookie = cookie('ID');
 my @battle_cookie = cookie('BATTLE');
 my $newTurn = $battle_cookie[0]+1; 
 
+if($retrieve_cookie[2] == '')
+	{
+		$retrieve_cookie[2] = '0';
+	}
+	if($retrieve_cookie[3] == '')
+	{
+		$retrieve_cookie[3] = '0';
+	}
+	if($retrieve_cookie[4] == '')
+	{
+		$retrieve_cookie[4] = '0';
+	}
+	if($retrieve_cookie[5] == '')
+	{
+		$retrieve_cookie[5] = '0';
+	}
+	if($retrieve_cookie[6] == '')
+	{
+		$retrieve_cookie[6] = '0';
+	}
+	if($retrieve_cookie[7] == '')
+	{
+		$retrieve_cookie[7] = '0';
+	}
+	if($retrieve_cookie[8] == '')
+	{
+		$retrieve_cookie[8] = '0';
+	}
+	if($retrieve_cookie[8] == '')
+	{
+		$retrieve_cookie[8] = '0';
+	}
+	if($retrieve_cookie[9] == '')
+	{
+		$retrieve_cookie[9] = '0';
+	}
+	if($retrieve_cookie[10] == '')
+	{
+		$retrieve_cookie[10] = '0';
+	}
+
 
 
 my $enemyAction =  int(rand(4));
@@ -165,27 +206,6 @@ if($yourAction eq "MagicBarrier")
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 my $BattleCookie = cookie
 (
 	#turn, EName, YourHealth, EHealth,E hp     Estrength, Eintel, Eres, Espeed
@@ -196,11 +216,30 @@ my $BattleCookie = cookie
 	-expires=>'+1y'
 );
 
+my $newWon = $retrieve_cookie[6];
+my $newLost = $retrieve_cookie[7];
+
+if($myNewHP ==0 )
+{
+	$newLost = $newLost + 1;
+}
+if($yourNewHP==0)
+{
+	$newWon = $newWon+1;
+}
+
+
+my $cookie = cookie
+(
+	-name=>'ID',
+	-value=>["$retrieve_cookie[0]","$retrieve_cookie[1]","$retrieve_cookie[2]","$retrieve_cookie[3]", "$retrieve_cookie[4]", "$retrieve_cookie[5]", "$newWon", "$newLost","$retrieve_cookie[8]","$retrieve_cookie[9]","$retrieve_cookie[10]"],
+	-expires=>'+1y'
+);
 
 
 
 
-print header(-cookie=>$BattleCookie);
+print header(-cookie=>[$BattleCookie, $cookie]);
 
 
 print start_html;
@@ -375,7 +414,7 @@ if($myNewHP==0 || $yourNewHP==0)
 	}
 	if($yourNewHP==0)
 	{
-		print p("<b> YOU"VE DEFEATED $battle_cookie[1]! </b>");
+		print p("<b> YOU HAVE DEFEATED $battle_cookie[1]! </b>");
 		print a( {-href=>'main.cgi'}, "Go back to main menu");
 	}
 }
