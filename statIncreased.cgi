@@ -26,16 +26,16 @@ print header(-cookie=>$cookie);
 print start_html;
 print h1("PerlPets");
 print p("YOUR PET HAS BECOME STRONGER! \n");	
-if($cookieVal[0] eq "left")
+if($cookieVal[0] eq "puffy")
 {
 	print "<center>";
-	print img {src=>'img/testpet/testpet_normal.png',align=>'CENTER', height=>'100', width=>'100'};
+	print img {src=>'img/puffy/puffy_normal.png',align=>'CENTER', height=>'100', width=>'100'};
 	print "</center>";
 }
 else
 {
 	print "<center>";
-	print img {src=>'img/testpet2/testpet2_normal.png',align=>'CENTER', height=>'100', width=>'100'};
+	print img {src=>'img/turdle/turdle_normal.png',align=>'CENTER', height=>'100', width=>'100'};
 	print "</center>";
 }
 print br;

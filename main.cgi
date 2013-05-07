@@ -5,9 +5,19 @@ use CGI qw(:standard);
 
 my @retrieve_cookie = cookie('ID');
 
+my $BattleCookie = cookie
+(
+	#turn, EName, YourHealth, EHealth, Estrength, Eintel, Eres, Espeed 
+	-name=>'BATTLE',
+	-value=>['1', "SLIME", '100', '100', '3', '4','10','10'],
+	-expires=>'+1y'
+);
+
+
+
 if (@retrieve_cookie) 
-{
-	print header;
+{	
+	print header(-cookie=>$BattleCookie);
 	print start_html;
 	print h1("PerlPets");
 	print '<link rel="stylesheet" type="text/css" href="css/main.css">';
@@ -54,16 +64,16 @@ if (@retrieve_cookie)
 	}
 	
 	
-	if($retrieve_cookie[0] eq "left")
+	if($retrieve_cookie[0] eq "puffy")
 	{
 		print "<center>";
-		print img {src=>'img/testpet/testpet_normal.png', height=>'100', width=>'100',align=>"CENTER"};
+		print img {src=>'img/puffy/puffy_normal.png', height=>'100', width=>'100',align=>"CENTER"};
 		print "</center>";
 	}
 	else
 	{
 		print "<center>";
-		print img {src=>'img/testpet2/testpet2_normal.png', height=>'100', width=>'100'};
+		print img {src=>'img/turdle/turdle_normal.png', height=>'100', width=>'100'};
 		print "</center>";
 	}
 	

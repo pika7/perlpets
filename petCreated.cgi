@@ -30,14 +30,14 @@ print start_html;
 print h1("PerlPets");
 print p("Congratulations! You just finished creating a new pet! \n");	
 
-if($cookieVal[0] eq "left")
+if($cookieVal[0] eq "puffy")
 {
 	
-	print img {src=>'img/testpet/testpet_normal.png',align=>'CENTER', height=>'100', width=>'100'};
+	print img {src=>'img/puffy/puffy_normal.png',align=>'CENTER', height=>'100', width=>'100'};
 }
 else
 {
-	print img {src=>'img/testpet2/testpet2_normal.png',align=>'CENTER', height=>'100', width=>'100'};
+	print img {src=>'img/turdle/turdle_normal.png',align=>'CENTER', height=>'100', width=>'100'};
 }
 
 print br;

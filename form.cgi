@@ -11,8 +11,8 @@ print h1("PerlPets");
 print '<link rel="stylesheet" type="text/css" href="css/main.css">';
 print p("Welcome to PerlPets! \n");
 print p("Choose your pet image \n");
-print img {src=>'img/testpet/testpet_normal.png',align=>'LEFT', height=>'100', width=>'100'};
-print img {src=>'img/testpet2/testpet2_normal.png',align=>'LEFT', height=>'100', width=>'100'};
+print img {src=>'img/puffy/puffy_normal.png',align=>'LEFT', height=>'100', width=>'100'};
+print img {src=>'img/turdle/turdle_normal.png',align=>'LEFT', height=>'100', width=>'100'};
 
 print br;
 print br;
@@ -22,7 +22,7 @@ print br;
 print br;
 
 print hr, start_form;
-print radio_group(-name=>"petimage", -values => ["left", "right"]);
+print radio_group(-name=>"petimage", -values => ["puffy", "turdle"]);
 
 print p("Give it a name \n");
 print p ("Name: ", textfield("name",""));
