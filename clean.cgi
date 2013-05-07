@@ -11,7 +11,7 @@ if (@retrieve_cookie)
 	# get current date and time
 	my ($sec, $minute, $hour, $day, $month, $year, $wday, $yday, $isdst) = localtime(time);
 	my $currDate = $hour . "_" . $day . "_" . $month . "_" . $year;
-	
+
 	my $cookie = cookie
 	(
 		-name=>'ID',
@@ -33,7 +33,7 @@ if (@retrieve_cookie)
 	print br;
 	print a( {-href=>"train.cgi"}, "Train"); 
 	print br;
-	print a( {-href=>"main.cgi"}, "Eat"); 
+	print a( {-href=>"eat.cgi"}, "Eat"); 
 	print br;
 	print a( {-href=>"bath.cgi"}, "Bath"); 
 	print br;
@@ -54,7 +54,7 @@ if (@retrieve_cookie)
 	print "</DIV>";
 	
 	# stuff
-	print p("Your pet is now clean!");
+	print p("$retrieve_cookie[1] is sparkling clean!");
 	# end stuff	
 
 	end_html;

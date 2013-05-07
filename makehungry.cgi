@@ -42,7 +42,7 @@ if(param())
 			hour => param("hour"),
 			day => param("day"),
 			month => param("month"),
-			year => param("year") - 1900;
+			year => param("year") - 1900
 		);
 
 		print "<META HTTP-EQUIV=refresh CONTENT=\"1 URL='$uri'\">\n";

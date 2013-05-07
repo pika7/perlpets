@@ -5,6 +5,13 @@ h1 {
 
 h2 {
 	font-family: Verdana;
+	text-align: center;
+}
+
+h3 {
+	font-family: Verdana;
+	text-align: center;
+	color: #555555;
 }
 
 p {

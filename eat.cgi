@@ -10,7 +10,7 @@ if (@retrieve_cookie)
 {	
 	print header();
 	print '<script src="js/open_window.js"></script>';
-	print start_html("PerlPets - Take a bath!");
+	print start_html("PerlPets - Eat some food!");
 	print h1("PerlPets");
 	print '<link rel="stylesheet" type="text/css" href="css/main.css">';
 	
@@ -43,7 +43,7 @@ if (@retrieve_cookie)
 	}
 
 	# stuff
-	print p('<a href=\'javascript:open_window("PerlPets - Bath Time!", "bath.html", 100, 100, 500, 400, 0, 0, 0, 0, 0)\'>Click here to take a bath.</a>');
+	print p('<a href="full.cgi">Click here to feed your pet.</a>');
 
 	# end stuff	
 

@@ -68,6 +68,20 @@ if (@retrieve_cookie)
 		$moodIndicator = "Normal";
 	}
 	
+
+	print "<div class=\"Actions\">\n";
+	print a( {-href=>"main.cgi"},"My Pet's status"); 
+	print br;
+	print a( {-href=>"battle.cgi"}, "Battle"); 
+	print br;
+	print a( {-href=>"train.cgi"}, "Train"); 
+	print br;
+	print a( {-href=>"eat.cgi"}, "Eat"); 
+	print br;
+	print a( {-href=>"bath.cgi"}, "Bath"); 
+	print br;
+	print a( {-href=>"deletepet.cgi"}, "Delete the pet"); 
+	
 	
 	if($retrieve_cookie[0] eq "puffy")
 	{
@@ -75,12 +89,12 @@ if (@retrieve_cookie)
 		if($retrieve_cookie[6] > $retrieve_cookie[7])
 		{
 			$moodIndicator = "HAPPY";
-			print img {src=>'img/puffy/puffy_happy.png', height=>'100', width=>'100',align=>"CENTER"};
+			print img {src=>'img/puffy/puffy_happy.png'};
 		}
 		else
 		{
 			$moodIndicator = "NORMAL";
-			print img {src=>'img/puffy/puffy_normal.png', height=>'100', width=>'100',align=>"CENTER"};
+			print img {src=>'img/puffy/puffy_normal.png'};
 		}
 		print "</center>";
 	}
@@ -90,39 +104,25 @@ if (@retrieve_cookie)
 		if($retrieve_cookie[6] > $retrieve_cookie[7])
 		{
 			$moodIndicator = "HAPPY";
-			print img {src=>'img/puffy/turdle_happy.png', height=>'100', width=>'100',align=>"CENTER"};
+			print img {src=>'img/puffy/turdle_happy.png'};
 		}
 		else
 		{
 			$moodIndicator = "NORMAL";
-			print img {src=>'img/turdle/turdle_normal.png', height=>'100', width=>'100'};
+			print img {src=>'img/turdle/turdle_normal.png'};
 		}
 		print "</center>";
 	}
-	
-	print "<div class=\"Actions\">\n";
-	print a( {-href=>"main.cgi"},"My Pet's status"); 
-	print br;
-	print a( {-href=>"battle.cgi"}, "Battle"); 
-	print br;
-	print a( {-href=>"train.cgi"}, "Train"); 
-	print br;
-	print a( {-href=>"main.cgi"}, "Eat"); 
-	print br;
-	print a( {-href=>"bath.cgi"}, "Bath"); 
-	print br;
-	print a( {-href=>"deletepet.cgi"}, "Delete the pet"); 
-	
 	
 	print "</DIV>";
 	
 	
 	print "<div class=\"Status\">\n";
-	print p({-align=>'center'},"$retrieve_cookie[1]'s status");
+	print p({-align=>'center'}, h2("$retrieve_cookie[1]'s status"));
 	print br;
 	
 	print "<b>";
-	print p({-align=>'center'},"---Battle Status---");
+	print p({-align=>'center'}, h3("Battle Status"));
 	print "</b>";
 	
 	print p({-align=>'center'},"STRENGTH: $retrieve_cookie[2]");
@@ -132,14 +132,14 @@ if (@retrieve_cookie)
 	print br;
 	
 	print "<b>";
-	print p({-align=>'center'},"---Battle Record---");
+	print p({-align=>'center'}, h3("Battle Record"));
 	print "</b>";
 	print p({-align=>'center'},"WON: $retrieve_cookie[6]");	
 	print p({-align=>'center'},"LOST: $retrieve_cookie[7]");
 	print br;
 		
 	print "<b>";
-	print p({-align=>'center'},"---Personal Status---");
+	print p({-align=>'center'}, h3("Personal Status"));
 	print "</b>";
 	print p({-align=>'center'},"MOOD: $moodIndicator ");
 
