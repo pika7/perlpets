@@ -16,26 +16,13 @@ window.onload = function () {
 	);
 
 	/* preload pet images depending on which pet is selected */
-	// TODO: make this prettier
-	switch(getCookie("pet_type")) {
-		case "testpet":
-		game.preload(
-			'img/testpet/testpet_normal.png',
-			'img/testpet/testpet_happy.png'
-		);
-		break;
+	var cookieArray = getCookie("ID").split("&");
+	var petType = cookieArray[0];
 
-		case "testpet2":
-		game.preload(
-			'img/testpet2/testpet2_normal.png',
-			'img/testpet2/testpet2_happy.png'
-		);
-		break;
-
-		default:
-		console.log("ERROR: Could not detect which pet is selected.");
-		break;
-	}
+	game.preload(
+		'img/' + petType + '/' + petType + '_normal.png',
+		'img/' + petType + '/' + petType + '_happy.png'
+	);
 
 	game.onload = function () {
 		var scene = new SceneGame();

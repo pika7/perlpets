@@ -86,7 +86,7 @@ if (@retrieve_cookie)
 	print br;
 	print a( {-href=>"main.cgi"}, "Eat"); 
 	print br;
-	print a( {-href=>"cookietest.cgi"}, "Bath"); 
+	print a( {-href=>"bath.cgi"}, "Bath"); 
 	print br;
 	
 	print "</DIV>";
@@ -116,10 +116,20 @@ if (@retrieve_cookie)
 	print "<b>";
 	print p({-align=>'center'},"---Personal Status---");
 	print "</b>";
-		
+
 	print p({-align=>'center'},"MOOD: $retrieve_cookie[8]");
-	print p({-align=>'center'},"HUNGER: $retrieve_cookie[9]");
+
+	# calculate hunger and cleanliness by how long ago the pet was last fed or bathed
+	my $lastFed = $retrieve_cookie[9];
+	my $hunger;
+
+	
+
+	print p({-align=>'center'},"HUNGER: $hunger");
+
+	my $lastBathed = $retrieve_cookie
 	print p({-align=>'center'},"CLEANLINESS: $retrieve_cookie[10]");
+
 	print "</DIV>";
 	
 

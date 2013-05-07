@@ -40,6 +40,8 @@ print p(submit("create a new pet"), reset("clear"));
 
 if(param())
 {
+	# get date and time
+	my ( $sec, $min, $hr, $mday, $mon, $year, $wday, $yday, $isdst ) = localtime(time);
 	
 	my $strength = param("Strength");
 	my $intelligence = param("Intelligence");
@@ -51,8 +53,8 @@ if(param())
 	my $won = '0';
 	my $lost = '0';
 	my $mood = "normal";
-	my $hunger = "bloated";
-	my $cleanliness = "clean";
+	my $hunger = $hr . "_" . $mday . "_" . $mon . "_" . $year;
+	my $cleanliness = $hr . "_" . $mday . "_" . $mon . "_" . $year;
 	
 	if($total == 20)
 	{

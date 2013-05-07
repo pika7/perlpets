@@ -21,7 +21,8 @@ var SceneGame = Class.create(Scene, {
 		this.addChild(this.background);
 
 		/* get the pet type from the cookie */
-		var petType = getCookie("pet_type");
+		var cookieArray = getCookie("ID").split("&");
+		var petType = cookieArray[0];
 
 		/* display the pet in the center */
 		this.pet = new Pet(100, 50, petType);
@@ -99,7 +100,7 @@ var SceneGame = Class.create(Scene, {
 	scrub: function(evt) {
 		/* spawn a bubble */
 		if (!this.clean) {
-			if (Math.random() > 0.75) {
+			if (Math.random() > 0.90) {
 				this.addChild(new Bubble(evt.x - 75, evt.y - 75));
 			}
 
@@ -171,6 +172,8 @@ var Pet = Class.create(Sprite, {
 		this.happyImage = "img/" + this.petType + "/" + this.petType + "_happy.png";
 
 		this.image = this.game.assets[this.normalImage];
+		console.log(this.normalImage);
+		console.log(this.happyImage);
 	},
 
 	startScrub: function(evt) {
